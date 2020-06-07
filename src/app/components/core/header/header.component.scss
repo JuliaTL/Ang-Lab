@@ -1,0 +1,34 @@
+ .nav {
+    display: block;
+    overflow: hidden;
+    background-color: dodgerblue;
+    opacity: 0.7;
+    padding: 1rem 0.5rem;
+    text-align: center;
+    list-style: none;
+    width: 100%;
+    &-item {
+      padding: 0.2rem;
+      &__link {
+        color: white;
+        text-decoration: none;
+      }
+    }
+  }
+  @media screen and (min-width: 600px){
+    .nav {
+      padding: 1rem;
+      display: flex;
+      justify-content: flex-end;
+      &-item {
+        margin-left: 1rem;
+        font-weight: 600;
+        font-size: 1rem;
+        &__link {
+          text-decoration: none;
+          cursor: pointer;
+          white-space: nowrap;
+        }
+      }
+    }
+  }

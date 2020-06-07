@@ -1,0 +1,35 @@
+.box {
+  border: solid 10px royalblue;
+  width: 11rem;
+  height: 11rem;
+  border-radius: 50%;
+  margin: 50px auto;
+  animation-name: rainbow;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  position: relative;
+  &-title {
+    text-align: center;
+    justify-content: center;
+    margin: 50px auto;
+    color: white;
+    font-weight: bolder;
+  }
+}
+@keyframes rainbow {
+  0% {
+    background-color: blue;
+    top: 0;
+  }
+  50% {
+    background-color: lightskyblue;
+    top: 15rem;
+    width: 14rem;
+    height: 10rem;
+    opacity: 0.5;
+  }
+  100% {
+    background-color: royalblue;
+    top: 0;
+  }
+}

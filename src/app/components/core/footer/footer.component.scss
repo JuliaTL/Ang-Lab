@@ -1,0 +1,21 @@
+.footer {
+  overflow: hidden;
+  background-color: darkgrey;
+  opacity: 0.7;
+  padding: 1rem 0.5rem;
+  text-align: center;
+  width: 100%;
+  color: white;
+  bottom: 0;
+}
+@media screen and (min-width: 600px){
+  .footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background-color: darkgrey;
+    text-align: center;
+  }
+}
