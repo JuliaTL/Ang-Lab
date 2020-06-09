@@ -1,0 +1,17 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 text-center">
+      <button type="button"
+              class="btn btn-success"
+              (click)="startIncrement()"> Start </button>
+      <button type="button"
+              class="btn btn-danger"
+              (click)="stopIncrement()"> End </button>
+    </div>
+  </div>
+  <ng-container>
+    <app-even *ngIf="showEven"></app-even>
+    <app-odd *ngIf="showOdd"></app-odd>
+  </ng-container>
+
+</div>
