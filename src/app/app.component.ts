@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title: string = 'Home task #3';
+  show: boolean = false;
 
 
   onStart($event: any) {

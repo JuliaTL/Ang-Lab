@@ -7,30 +7,40 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 })
 export class ControlComponent implements OnInit {
   @Output('startIncrement') onStart = new EventEmitter();
+  @Output('stopIncrement') onStop = new EventEmitter();
+  @Output('evens') evenArray: Array<number> = [];
+  @Output('odds') oddArray: Array<number> = [];
   counter: number = 0;
-  showEven: boolean = false;
-  showOdd: boolean = false;
-  constructor() { }
+  show: boolean = false;
+  interval: any;
+  even: number = this.evenArray[this.counter];
+  odd: number = this.oddArray[this.counter];
 
+  constructor() { }
   ngOnInit(): void {
   }
 
   startIncrement() {
-    this.onStart.emit();
-    setInterval(() => { this.addOne()}, 5000);
+    this.onStart.emit(this.counter);
+    this.interval = setInterval(() => { this.addOne() }, 3000);
+    //this.show = !this.show;
   }
 
   addOne() {
     this.counter++;
     console.log(this.counter);
     if ( this.counter % 2 === 0 ) {
-      this.showEven = true;
+      this.evenArray.push(this.counter);
+      //this.show = !this.show;
     } else {
-      this.showOdd = true;
+      this.oddArray.push(this.counter);
+      this.show = !this.show;
     }
   }
 
   stopIncrement() {
-    clearInterval();
+    this.onStop.emit();
+    clearInterval(this.interval);
+    this.counter = 0;
   }
 }

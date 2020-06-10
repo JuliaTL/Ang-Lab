@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-odd',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./odd.component.scss']
 })
 export class OddComponent implements OnInit {
+  @Input('odds') oddArray;
+  odd: any = this.oddArray;
 
   constructor() { }
 
