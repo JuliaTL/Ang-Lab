@@ -7,7 +7,6 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class OddComponent implements OnInit {
   @Input('odds') oddArray;
-  odd: any = this.oddArray;
 
   constructor() { }
 

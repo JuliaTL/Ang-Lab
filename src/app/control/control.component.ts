@@ -13,8 +13,6 @@ export class ControlComponent implements OnInit {
   counter: number = 0;
   show: boolean = false;
   interval: any;
-  even: number = this.evenArray[this.counter];
-  odd: number = this.oddArray[this.counter];
 
   constructor() { }
   ngOnInit(): void {
@@ -22,8 +20,7 @@ export class ControlComponent implements OnInit {
 
   startIncrement() {
     this.onStart.emit(this.counter);
-    this.interval = setInterval(() => { this.addOne() }, 3000);
-    //this.show = !this.show;
+    this.interval = setInterval(() => { this.addOne() }, 2000);
   }
 
   addOne() {
@@ -31,10 +28,9 @@ export class ControlComponent implements OnInit {
     console.log(this.counter);
     if ( this.counter % 2 === 0 ) {
       this.evenArray.push(this.counter);
-      //this.show = !this.show;
     } else {
-      this.oddArray.push(this.counter);
       this.show = !this.show;
+      this.oddArray.push(this.counter);
     }
   }
 
@@ -42,5 +38,6 @@ export class ControlComponent implements OnInit {
     this.onStop.emit();
     clearInterval(this.interval);
     this.counter = 0;
+    this.oddArray, this.evenArray = [];
   }
 }

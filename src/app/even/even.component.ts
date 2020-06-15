@@ -6,15 +6,11 @@ import {Component, Input, OnInit, Output} from '@angular/core';
   styleUrls: ['./even.component.scss']
 })
 export class EvenComponent implements OnInit {
-  @Input('evens') evenArray: Array<number> = [];
-  evens: [];
-  even: any = this.evens;
+  @Input('evens') evenArray: Array<number>;
 
   constructor() { }
 
   ngOnInit(): void {
-  }
-  showEvens() {
   }
 
 }
