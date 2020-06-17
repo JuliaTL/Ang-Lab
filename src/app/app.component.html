@@ -1,1 +1,8 @@
+<div class="container-fluid">
+  <h2>{{ title }}</h2>
+    <app-create-shopping-item (createItem)="onCreateItem($event)"></app-create-shopping-item>
+  <div class="row">
+    <app-shopping-list [shoppingList]="shoppingList"></app-shopping-list>
+  </div>
+</div>
 <router-outlet></router-outlet>

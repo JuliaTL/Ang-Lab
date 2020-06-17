@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'hometasks';
+  title = 'hometask #4';
+  shoppingList: { itemName: string, itemAmount: string }[] = [{ itemName: 'cheese', itemAmount: '200gr' }];
+
+  onCreateItem(newItem: {itemName: string; itemAmount: string}) {
+    this.shoppingList.push(newItem);
+  }
 }

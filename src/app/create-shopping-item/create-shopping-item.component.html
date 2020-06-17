@@ -1,0 +1,15 @@
+<label> Name:
+  <input type="text"
+         placeholder="name"
+         #itemNameInput
+          >
+</label>
+<label> Amount:
+  <input type="text"
+         placeholder="name"
+         #itemAmountInput
+         >
+</label>
+<button type="submit"
+        (click)="createItem(itemNameInput, itemAmountInput)"
+        >Submit</button>

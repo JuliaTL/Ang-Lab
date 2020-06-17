@@ -1,0 +1,5 @@
+<app-shopping-list-item *ngFor="let item of shoppingList" [item]="item">
+  <p>{{ item.itemName }}</p>
+  <h6>{{ item.itemAmount }}</h6>
+  <hr>
+</app-shopping-list-item>
