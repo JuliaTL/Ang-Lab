@@ -12,4 +12,8 @@ export class AppComponent {
   onCreateItem(newItem: {itemName: string; itemAmount: string}) {
     this.shoppingList.push(newItem);
   }
+
+  onDeleteItem(item: number) {
+    this.shoppingList.splice(item, 1);
+  }
 }

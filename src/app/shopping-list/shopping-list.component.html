@@ -1,5 +1,11 @@
 <app-shopping-list-item *ngFor="let item of shoppingList" [item]="item">
-  <p>{{ item.itemName }}</p>
-  <h6>{{ item.itemAmount }}</h6>
-  <hr>
+  <div class="card">
+    <h5 class="card-header">{{ item.itemName }}</h5>
+      <div class="card-body">
+        <h6>{{ item.itemAmount }}</h6>
+        <button class="btn btn-info"> Duplicate </button>
+        <button class="btn btn-danger"
+                (click)="deleteItem()"> Delete </button>
+      </div>
+  </div>
 </app-shopping-list-item>

@@ -1,15 +1,26 @@
-<label> Name:
-  <input type="text"
-         placeholder="name"
-         #itemNameInput
-          >
-</label>
-<label> Amount:
-  <input type="text"
-         placeholder="name"
-         #itemAmountInput
-         >
-</label>
-<button type="submit"
-        (click)="createItem(itemNameInput, itemAmountInput)"
-        >Submit</button>
+<div class="row text-center justify-content-center">
+  <form>
+    <div class="form-group">
+      <label> Name:
+        <input type="text"
+               class="form-control"
+               placeholder="name"
+               #itemNameInput
+                >
+      </label>
+      <div class="form-group">
+        <label> Amount:
+          <input type="text"
+                 class="form-control"
+                 placeholder="amount"
+                 #itemAmountInput
+                 >
+        </label>
+      </div>
+    </div>
+    <button type="submit"
+            class="btn btn-primary"
+            (click)="createItem(itemNameInput, itemAmountInput)"
+    >Submit</button>
+  </form>
+</div>
