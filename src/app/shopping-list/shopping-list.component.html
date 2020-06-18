@@ -3,9 +3,10 @@
     <h5 class="card-header">{{ item.itemName }}</h5>
       <div class="card-body">
         <h6>{{ item.itemAmount }}</h6>
-        <button class="btn btn-info"> Duplicate </button>
+        <button class="btn btn-info"
+                (click)="duplicateItem(item.itemName, item.itemAmount)"> Duplicate </button>
         <button class="btn btn-danger"
-                (click)="deleteItem()"> Delete </button>
+                (click)="deleteItem(item)"> Delete </button>
       </div>
   </div>
 </app-shopping-list-item>

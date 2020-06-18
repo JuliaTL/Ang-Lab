@@ -4,7 +4,9 @@
   <div class="row">
     <div class="col-12 text-center">
       <app-shopping-list [shoppingList]="shoppingList"
-                          (deleteItem)="onDeleteItem($event)"></app-shopping-list>
+                         (duplicateItem)="onDuplicateItem($event)"
+                          (deleteItem)="onDeleteItem($event)"
+                          ></app-shopping-list>
     </div>
   </div>
 </div>

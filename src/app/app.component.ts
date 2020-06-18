@@ -7,13 +7,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'hometask #4';
-  shoppingList: { itemName: string, itemAmount: string }[] = [{ itemName: 'cheese', itemAmount: '200gr' }];
+  shoppingList:  { itemName: string, itemAmount: string }[] = [ { itemName: 'cheese', itemAmount: '200gr' }];
 
   onCreateItem(newItem: {itemName: string; itemAmount: string}) {
     this.shoppingList.push(newItem);
   }
 
   onDeleteItem(item: number) {
-    this.shoppingList.splice(item, 1);
+      this.shoppingList.splice(item, 1);
+  }
+
+  onDuplicateItem(duplicateItem: {itemName: string; itemAmount: string}) {
+    this.shoppingList.push(duplicateItem);
   }
 }
