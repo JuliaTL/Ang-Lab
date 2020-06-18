@@ -13,8 +13,9 @@ export class AppComponent {
     this.shoppingList.push(newItem);
   }
 
-  onDeleteItem(item: number) {
-      this.shoppingList.splice(item, 1);
+  onDeleteItem(item) {
+    this.shoppingList.splice(
+      this.shoppingList.findIndex(i => i.itemName === item.itemName) , 1);
   }
 
   onDuplicateItem(duplicateItem: {itemName: string; itemAmount: string}) {
