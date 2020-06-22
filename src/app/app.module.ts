@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { FormsModule } from "@angular/forms";
 import { FocusDirective } from "./directives/focus.directive";
 import { HideBtnDirective } from './directives/hide-btn.directive';
+import { HoverDirective } from './directives/hover.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     FocusDirective,
-    HideBtnDirective
+    HideBtnDirective,
+    HoverDirective
   ],
     imports: [
         BrowserModule,
