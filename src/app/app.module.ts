@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from "@angular/forms";
 import { FocusDirective } from "./directives/focus.directive";
+import { HideBtnDirective } from './directives/hide-btn.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FocusDirective
+    FocusDirective,
+    HideBtnDirective
   ],
     imports: [
         BrowserModule,

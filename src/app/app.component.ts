@@ -8,4 +8,5 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'hometasks #5';
   subtitle = 'Directives';
+  inputElement: string = '';
 }
