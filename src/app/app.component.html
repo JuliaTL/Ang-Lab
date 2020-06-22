@@ -3,6 +3,7 @@
     <div class="col-12 text-center">
       <h2 class="text-center text-primary">{{ title }}</h2>
       <h4 class="text-center text-secondary"> {{ subtitle }}</h4>
+
       <div class="col-md-6">
       <label> Set focus
         <input appFocus
@@ -12,9 +13,8 @@
 
         <div class="col-md-6">
           <label> Hide Btn if Input empty
-            <input
-                    [(ngModel)]="inputElement"
-                    type="text">
+            <input [(ngModel)]="inputElement"
+                   type="text">
           </label>
           <div *appHideBtn="inputElement.length > 0">
             <button
@@ -24,16 +24,17 @@
           </div>
         </div>
 
-      <div class="col-md-6">
-        <label> On hover Input change font size and border-color
-          <input appHover
-                 [dHover]="{border: '2px solid red', fontSize: '2rem'}"
-                 type="text"
-                 placeholder="hover me">
-        </label>
-      </div>
+        <div class="col-md-6">
+          <label> On hover Input change font size and border-color
+            <input appHover
+                   [dHover]="{ borderColor: 'blue',
+                               fontSize: '2rem'}"
+                   type="text"
+                   placeholder="hover me">
+          </label>
+        </div>
 
       </div>
     </div>
-  </div>
+</div>
 <router-outlet></router-outlet>
