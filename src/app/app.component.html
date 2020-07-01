@@ -1,12 +1,9 @@
 <div class="container-fluid">
   <h2 class="text-primary text-center">{{ title }}</h2>
-    <app-create-shopping-item (createItem)="onCreateItem($event)"></app-create-shopping-item>
+    <app-create-shopping-item></app-create-shopping-item>
   <div class="row">
     <div class="col-12 text-center">
-      <app-shopping-list [shoppingList]="shoppingList"
-                         (duplicateItem)="onDuplicateItem($event)"
-                          (deleteItem)="onDeleteItem($event)"
-                          ></app-shopping-list>
+      <app-shopping-list [shoppingList]="shoppingList"></app-shopping-list>
     </div>
   </div>
 </div>

@@ -1,12 +1,4 @@
-<app-shopping-list-item *ngFor="let item of shoppingList" [item]="item">
-  <div class="card">
-    <h5 class="card-header">{{ item.itemName }}</h5>
-      <div class="card-body">
-        <h6>{{ item.itemAmount }}</h6>
-        <button class="btn btn-info"
-                (click)="duplicateItem(item.itemName, item.itemAmount)"> Duplicate </button>
-        <button class="btn btn-danger"
-                (click)="deleteItem(item)"> Delete </button>
-      </div>
-  </div>
+<app-shopping-list-item *ngFor="let item of shoppingList; let i = index"
+                        [id] = "i"
+                        [item]="item">
 </app-shopping-list-item>

@@ -1,3 +1,22 @@
-<div>
-  <ng-content></ng-content>
+<div class="card">
+  <h5 class="card-header">{{ item.itemName }}
+    <button class="btn btn-warning"
+            (click)="editItemName = !editItemName"
+            >Change</button>
+    <div *ngIf="editItemName">
+      <input  class="form-control"
+              placeholder="name"
+              #editedItemNameInput>
+      <button class="btn btn-success" (click)="onChange()">Save</button>
+    </div>
+  </h5>
+  <div class="card-body">
+    <h6>{{ item.itemAmount }}</h6>
+    <button class="btn btn-info"
+            (click)="onDuplicate()">
+             Duplicate </button>
+    <button class="btn btn-danger"
+            (click)="onDelete()">
+             Delete </button>
+  </div>
 </div>

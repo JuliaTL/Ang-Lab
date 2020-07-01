@@ -6,7 +6,8 @@ import { AppComponent } from './app.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingListItemComponent } from './shopping-list/shopping-list-item/shopping-list-item.component';
 import { CreateShoppingItemComponent } from './create-shopping-item/create-shopping-item.component';
-import {FormsModule} from "@angular/forms";
+import { FormsModule } from "@angular/forms";
+import { LoggingService } from "./services/logging.service";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import {FormsModule} from "@angular/forms";
         AppRoutingModule,
         FormsModule
     ],
-  providers: [],
+  providers: [ LoggingService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

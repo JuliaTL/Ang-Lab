@@ -1,24 +1,17 @@
 import { Component } from '@angular/core';
+import { ShoppingService } from "./services/shopping.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  providers: [ShoppingService]
 })
 export class AppComponent {
-  title = 'hometask #4';
-  shoppingList:  { itemName: string, itemAmount: string }[] = [ { itemName: 'cheese', itemAmount: '200gr' }];
+  title = 'hometask #6';
+  shoppingList:  { itemName: string, itemAmount: string }[] = [];
 
-  onCreateItem(newItem: {itemName: string; itemAmount: string}) {
-    this.shoppingList.push(newItem);
-  }
-
-  onDeleteItem(item) {
-    this.shoppingList.splice(
-      this.shoppingList.findIndex(i => i.itemName === item.itemName) , 1);
-  }
-
-  onDuplicateItem(duplicateItem: {itemName: string; itemAmount: string}) {
-    this.shoppingList.push(duplicateItem);
+  constructor(private shoppingService: ShoppingService) {
+    this.shoppingList = this.shoppingService.shoppingList;
   }
 }
