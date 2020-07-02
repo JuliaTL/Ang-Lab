@@ -10,7 +10,7 @@ import {ShoppingService} from "../services/shopping.service";
 export class ViewShoppingItemComponent implements OnInit {
   itemName: string;
   itemAmount: string;
-  constructor(private route: ActivatedRoute, public shoppingService: ShoppingService) { }
+  constructor(public route: ActivatedRoute, public shoppingService: ShoppingService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params)=> {

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ShoppingService} from "../services/shopping.service";
 
 @Component({
@@ -9,9 +9,10 @@ import {ShoppingService} from "../services/shopping.service";
 })
 export class ViewShoppingListComponent implements OnInit {
 
-  itemName: string;
-  itemAmount: string;
-  constructor(private route: ActivatedRoute, public shoppingService: ShoppingService) { }
+  itemName;
+  itemAmount;
+
+  constructor(public router: Router, public route: ActivatedRoute, public shoppingService: ShoppingService) { }
 
   ngOnInit(): void {
     // this.itemName = this.route.snapshot.params['itemName'];

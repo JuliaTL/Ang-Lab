@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'view-shopping-list', component: ViewShoppingListComponent },
   { path: 'view-shopping-list/:itemName/:itemAmount', component: ViewShoppingListComponent},
-  { path: 'view-shopping-item', component: ViewShoppingItemComponent},
+  { path: 'view-shopping-item/:itemName/:itemAmount', component: ViewShoppingItemComponent},
   { path: 'add-purchase', component: AddPurchaseComponent },
 ];
 
