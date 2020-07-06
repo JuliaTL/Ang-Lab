@@ -1,15 +1,19 @@
-<div class="text-center">
-  <div *ngIf="shoppingService.shoppingList">
-    <ol>
-      <li *ngFor="let item of shoppingService.shoppingList; let i = index"
-          [id] = "i"
-      > <a [routerLink]="['../view-shopping-item', item.itemName, item.itemAmount]">
-        <h4 class="text-dark"> Name: {{ item.itemName }} </h4>
-        <strong class="text-secondary"> Amount: {{ item.itemAmount }} </strong>
-        <hr>
-        </a>
-      </li>
-    </ol>
+  <div class="row">
+    <div class="col-4"
+         *ngIf="shoppingService.shoppingList">
+      <div class="list-group">
+            <a class="list-group-item list-group-item-action"
+               *ngFor="let item of shoppingService.shoppingList;
+                       let id = index"
+                [routerLink]="['../view-shopping-item', id, 'edit']"
+                [queryParams]="{allowEdit: id % 2 === 0 ? 1 : 0}"
+            >
+                  <h6 class="text-success"> Name: {{ item.itemName }} </h6>
+            </a>
+      </div>
+      <div class="col-8">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
   </div>
-</div>
 

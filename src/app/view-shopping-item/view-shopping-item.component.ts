@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ShoppingService} from "../services/shopping.service";
 
 @Component({
@@ -8,16 +8,16 @@ import {ShoppingService} from "../services/shopping.service";
   styleUrls: ['./view-shopping-item.component.scss']
 })
 export class ViewShoppingItemComponent implements OnInit {
-  itemName: string;
-  itemAmount: string;
-  item: { itemName: string, itemAmount: string };
-  constructor(public route: ActivatedRoute, public shoppingService: ShoppingService) { }
+  itemName;
+  itemAmount;
+  item;
+  constructor(public route: ActivatedRoute, public shoppingService: ShoppingService, private router: Router) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params)=> {
       this.itemName = params['itemName'];
       this.itemAmount = params['itemAmount'];
-    })
+      this.item = this.shoppingService.getItem(params['id'])
+    });
   }
-
 }

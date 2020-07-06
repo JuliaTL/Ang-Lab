@@ -8,19 +8,13 @@ import { ShoppingListItemComponent } from './shopping-list/shopping-list-item/sh
 import { CreateShoppingItemComponent } from './create-shopping-item/create-shopping-item.component';
 import { FormsModule } from "@angular/forms";
 import { LoggingService } from "./services/logging.service";
-import { Routes, RouterModule } from "@angular/router";
+import { RouterModule } from "@angular/router";
 import { HomeComponent } from './home/home.component';
 import { ViewShoppingListComponent } from './view-shopping-list/view-shopping-list.component';
 import { AddPurchaseComponent } from './add-purchase/add-purchase.component';
 import { ViewShoppingItemComponent } from './view-shopping-item/view-shopping-item.component';
-
-const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'view-shopping-list', component: ViewShoppingListComponent },
-  { path: 'view-shopping-list/:itemName', component: ViewShoppingListComponent},
-  { path: 'view-shopping-item/:itemName/:itemAmount', component: ViewShoppingItemComponent},
-  { path: 'add-purchase', component: AddPurchaseComponent },
-];
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { EditShoppingItemComponent } from './edit-shopping-item/edit-shopping-item.component';
 
 @NgModule({
   declarations: [
@@ -31,13 +25,14 @@ const routes: Routes = [
     HomeComponent,
     ViewShoppingListComponent,
     AddPurchaseComponent,
-    ViewShoppingItemComponent
+    ViewShoppingItemComponent,
+    PageNotFoundComponent,
+    EditShoppingItemComponent
   ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         FormsModule,
-        RouterModule.forRoot(routes),
     ],
   exports: [RouterModule],
   providers: [ LoggingService ],
