@@ -10,6 +10,7 @@ import {ShoppingService} from "../services/shopping.service";
 export class ViewShoppingItemComponent implements OnInit {
   itemName: string;
   itemAmount: string;
+  item: { itemName: string, itemAmount: string };
   constructor(public route: ActivatedRoute, public shoppingService: ShoppingService) { }
 
   ngOnInit(): void {

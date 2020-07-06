@@ -17,7 +17,7 @@ import { ViewShoppingItemComponent } from './view-shopping-item/view-shopping-it
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'view-shopping-list', component: ViewShoppingListComponent },
-  { path: 'view-shopping-list/:itemName/:itemAmount', component: ViewShoppingListComponent},
+  { path: 'view-shopping-list/:itemName', component: ViewShoppingListComponent},
   { path: 'view-shopping-item/:itemName/:itemAmount', component: ViewShoppingItemComponent},
   { path: 'add-purchase', component: AddPurchaseComponent },
 ];

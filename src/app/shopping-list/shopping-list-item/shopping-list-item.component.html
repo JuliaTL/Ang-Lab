@@ -1,5 +1,5 @@
 <div class="card">
-  <h5 class="card-header">{{ item.itemName }}
+  <h5 class="card-header">{{ itemName }}
     <button class="btn btn-warning"
             (click)="editItemName = !editItemName"
             >Change</button>
@@ -11,7 +11,7 @@
     </div>
   </h5>
   <div class="card-body">
-    <h6>{{ item.itemAmount }}</h6>
+    <h6>{{ itemAmount }}</h6>
     <button class="btn btn-info"
             (click)="onDuplicate()">
              Duplicate </button>

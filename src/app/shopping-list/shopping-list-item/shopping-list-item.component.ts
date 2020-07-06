@@ -10,10 +10,12 @@ export class ShoppingListItemComponent {
 @Input() item: { itemName: string, itemAmount: string };
 @Input() id: number;
 @Input() itemName: string;
+@Input() itemAmount: string;
 @ViewChild('editedItemNameInput') editedItemNameInput;
 editItemName: boolean = false;
 
-  constructor(private shoppingService: ShoppingService) { }
+  constructor(public shoppingService: ShoppingService) {
+  }
 
   onDelete() {
     this.shoppingService.deleteItem(this.id, this.item);

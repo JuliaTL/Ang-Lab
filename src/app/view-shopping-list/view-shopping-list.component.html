@@ -3,7 +3,7 @@
     <ol>
       <li *ngFor="let item of shoppingService.shoppingList; let i = index"
           [id] = "i"
-      > <a [routerLink]="'/view-shopping-item/:itemName/:itemAmount'">
+      > <a [routerLink]="['../view-shopping-item', item.itemName, item.itemAmount]">
         <h4 class="text-dark"> Name: {{ item.itemName }} </h4>
         <strong class="text-secondary"> Amount: {{ item.itemAmount }} </strong>
         <hr>
@@ -12,3 +12,4 @@
     </ol>
   </div>
 </div>
+
