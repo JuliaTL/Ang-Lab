@@ -1,2 +1,4 @@
-<app-edit-shopping-item></app-edit-shopping-item>
+<div *ngIf="shoppingService.shoppingList">
+  <app-shopping-list-item [routerLink]="['view-shopping-item/', id, 'edit']"></app-shopping-list-item>
+</div>
 

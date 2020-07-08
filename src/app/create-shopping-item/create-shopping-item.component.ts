@@ -13,7 +13,9 @@ export class CreateShoppingItemComponent {
   @ViewChild('itemNameInput') itemNameInput;
   @ViewChild('itemAmountInput') itemAmountInput;
 
-  constructor(private loggingService: LoggingService, private shoppingService: ShoppingService, public router: Router,
+  constructor(private loggingService: LoggingService,
+              private shoppingService: ShoppingService,
+              public router: Router,
               private route: ActivatedRoute) { }
 
   createItem(itemNameInput, itemAmountInput) {
