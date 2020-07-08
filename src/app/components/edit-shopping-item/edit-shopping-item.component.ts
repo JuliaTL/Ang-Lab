@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import { ShoppingService } from "../services/shopping.service";
+import { ShoppingService } from "../../services/shopping.service";
 import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({

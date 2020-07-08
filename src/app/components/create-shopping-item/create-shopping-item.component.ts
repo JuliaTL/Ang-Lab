@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
-import { LoggingService } from "../services/logging.service";
-import { ShoppingService } from "../services/shopping.service";
+import { LoggingService } from "../../services/logging.service";
+import { ShoppingService } from "../../services/shopping.service";
 import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
