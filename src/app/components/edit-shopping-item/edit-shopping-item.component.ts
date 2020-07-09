@@ -24,7 +24,7 @@ export class EditShoppingItemComponent implements OnInit, OnDestroy, ICanCompone
               private router: Router) { }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe((params: Params) => {
+    this.editsubscriber = this.route.queryParams.subscribe((params: Params) => {
       this.allowEdit = params['allowEdit'] === '1';
     });
     this.subscriber = this.route.params.subscribe((params: Params) => {
