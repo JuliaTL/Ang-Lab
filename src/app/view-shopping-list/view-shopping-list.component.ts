@@ -22,6 +22,7 @@ export class ViewShoppingListComponent implements OnInit, OnDestroy {
     // this.itemAmount = this.route.snapshot.params['itemAmount'];
    this.subscriber = this.route.params.subscribe((params)=> {
       this.item = this.shoppingService.getItem(+this.id);
+      console.log(this.id)
     });
   }
   ngOnDestroy(): void {

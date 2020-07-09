@@ -8,7 +8,7 @@
                  *ngFor="let item of shoppingService.shoppingList;
                          let id = index"
                  [routerLink]="['view-shopping-item/', id]"
-                 [queryParams]="{allowEdit: id % 2 === 0 ? 1 : 0}"
+                 [queryParams]="{allowEdit: id}"
               >
                     <h6 class="text-success"> {{ item.itemName }} </h6>
               </a>
