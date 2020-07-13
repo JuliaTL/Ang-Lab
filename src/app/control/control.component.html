@@ -3,18 +3,12 @@
     <div class="col-12 text-center">
       <button type="button"
               class="btn btn-success"
-              (click)="startIncrement()"> Start </button>
+              (click)="startIncrement()"
+              > Start </button>
       <button type="button"
               class="btn btn-danger"
-              (click)="stopIncrement()"> End </button>
+              (click)="stopIncrement()"
+              > End </button>
     </div>
   </div>
-<ng-container *ngIf="show">
-  <div *ngIf="counter % 2 === 0; else oddBlock">
-    <app-even *ngFor="let even of evenArray" [evens]="even"></app-even>
-  </div>
-  <ng-template #oddBlock>
-    <app-odd *ngFor="let odd of oddArray" [odds]="odd">{{ odd }}</app-odd>
-  </ng-template>
-</ng-container>
 </div>

@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component} from '@angular/core';
 
 
 @Component({
@@ -8,9 +8,14 @@ import {Component, Input} from '@angular/core';
 })
 export class AppComponent {
   title: string = 'Home task #3';
-  private $event: any;
+  oddArray: Array<number> = [];
+  evenArray: Array<number> = [];
 
-  onStart($event: any) {
-    this.$event = $event;
+  onStart(counter: number) {
+    if ( counter % 2 === 0 ) {
+      this.evenArray.push(counter);
+    } else {
+      this.oddArray.push(counter);
+    }
   }
 }

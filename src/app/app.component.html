@@ -1,5 +1,15 @@
 <div  class="container">
   <h2 class="text-center text-warning"> {{ title }}</h2>
+  <div>
+    <app-odd *ngFor="let odd of evenArray"
+             [odds]="odd">
+    </app-odd>
+  </div>
+  <div>
+    <app-even *ngFor="let even of oddArray"
+              [evens]="even">
+    </app-even>
+  </div>
   <app-control (startIncrement)="onStart($event)">
   </app-control>
 </div>
