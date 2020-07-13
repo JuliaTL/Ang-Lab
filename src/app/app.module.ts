@@ -3,10 +3,16 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ControlComponent } from './control/control.component';
+import { OddComponent } from './odd/odd.component';
+import { EvenComponent } from './even/even.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ControlComponent,
+    OddComponent,
+    EvenComponent
   ],
   imports: [
     BrowserModule,

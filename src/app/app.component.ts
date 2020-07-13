@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'hometasks';
+  title: string = 'Home task #3';
+  private $event: any;
+
+  onStart($event: any) {
+    this.$event = $event;
+  }
 }
