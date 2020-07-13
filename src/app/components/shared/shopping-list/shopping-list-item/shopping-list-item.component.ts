@@ -21,7 +21,7 @@ export class ShoppingListItemComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscriber = this.route.params.subscribe((params: Params)=>{
       this.id = params['id'];
-      this.item = this.shoppingService.getItem(+this.id);
+      this.item = {...this.shoppingService.getItem(+this.id)};
     });
     }
 

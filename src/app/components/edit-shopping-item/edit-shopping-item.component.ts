@@ -29,7 +29,7 @@ export class EditShoppingItemComponent implements OnInit, OnDestroy, ICanCompone
     });
     this.subscriber = this.route.params.subscribe((params: Params) => {
       this.id = params['id'];
-      this.item = this.shoppingService.getItem(+this.id);
+      this.item = {...this.shoppingService.getItem(+this.id)};
       this.itemName = this.item.itemName;
       this.itemAmount = this.item.itemAmount;
     });
