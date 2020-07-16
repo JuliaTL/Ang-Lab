@@ -62,9 +62,9 @@
     <p class="msg text-danger" *ngIf="form.invalid && form.touched">Form is invalid</p>
     <button class="btn btn-primary"
             type="submit"
-            [disabled]="form.invalid"
+            [disabled]="!form.valid"
             >Submit</button>
-    <p *ngIf="form.valid"> You entered  userName: {{user.name}} <br/>
+    <p *ngIf="submitted"> You entered  userName: {{user.name}} <br/>
                                         mail: {{user.email}} <br/>
                                         password: {{user.password}} <br/>
                                         question: {{user.question}}</p>
