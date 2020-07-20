@@ -40,13 +40,31 @@
       </label>
     </div>
     <p class="msg text-danger" *ngIf="signupForm.invalid && signupForm.touched">Form is invalid</p>
+    <div formArrayName="hobbies">
+      <h4>Your hobbies</h4>
+      <button class="btn btn-success"
+              (click)="onAddHobby()"
+              > Add Hobby
+      </button>
+      <div class="form-group"
+           *ngFor="let control of controls; let i = index">
+        <label for="email"> Hobby:
+          <span class="text-danger">*</span>
+          <input
+            id="hobby"
+            type="text"
+            class="form-control"
+            [formControlName]="i">
+        </label>
+      </div>
+    </div>
     <button class="btn btn-primary"
             type="submit"
             [disabled]="!signupForm.valid"
-    >Submit</button>
-<!--    <p *ngIf="submitted"> You entered  userName: {{user.name}} <br/>-->
-<!--      mail: {{user.email}} <br/>-->
-<!--      password: {{user.password}} <br/>-->
-<!--      question: {{user.question}}</p>-->
+    >
+      Submit</button>
+    <p *ngIf="submitted"> You entered  userName: {{signupForm.value.userData.username}} <br/>
+      mail: {{signupForm.value.userData.email}} <br/>
+      question: {{signupForm.value.question}}</p>
   </form>
 </div>
