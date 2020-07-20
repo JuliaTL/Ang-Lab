@@ -63,7 +63,8 @@
             [disabled]="!signupForm.valid"
     >
       Submit</button>
-    <p *ngIf="submitted"> You entered  userName: {{signupForm.value.userData.username}} <br/>
+    <p *ngIf="submitted"> You entered
+      userName: {{signupForm.value.userData.username}} <br/>
       mail: {{signupForm.value.userData.email}} <br/>
       question: {{signupForm.value.question}}</p>
   </form>

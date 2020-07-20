@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators } from "@angular/forms";
+import {FormArray, FormControl, FormGroup, ValidationErrors, Validators} from "@angular/forms";
+import {Observable} from "rxjs";
+import {NamesValidationService} from "../../utils/signup.validator";
 
 @Component({
   selector: 'app-reactive-form',
@@ -8,10 +10,10 @@ import { FormArray, FormControl, FormGroup, Validators } from "@angular/forms";
 })
 export class ReactiveFormComponent implements OnInit {
   signupForm: FormGroup;
-  submitted: boolean = false;
+  submitted= false;
   forbiddenName = 'John';
 
-  constructor() { }
+  constructor(private namesValidation: NamesValidationService) { }
 
   get controls() {
     return (this.signupForm.get('hobbies') as FormArray).controls;
@@ -20,7 +22,12 @@ export class ReactiveFormComponent implements OnInit {
   ngOnInit(): void {
     this.signupForm = new FormGroup({
       userData: new FormGroup({
-        'username': new FormControl(null, [Validators.required, this.checkForbiddenName.bind(this)]),
+        'username': new FormControl(null, [
+                                                      Validators.required,
+                                                      this.checkForbiddenName.bind(this),
+                                                      Validators.minLength(3)],
+                                        [this.namesValidator.bind(this)],
+        ),
         'email': new FormControl(null, [Validators.required, Validators.email]),
       }),
       'question': new FormControl('car'),
@@ -29,14 +36,20 @@ export class ReactiveFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.signupForm.value.userData.email);
     this.submitted = true;
+    setTimeout(()=>
+        this.signupForm.reset(),
+      3000)
+
   }
   checkForbiddenName(control: FormControl): {[k: string]: boolean} {
     if(this.forbiddenName.indexOf(control.value) !== -1) {
       return {'nameIsForbidden': true}
     }
     return null;
+  }
+  namesValidator(control: FormControl): Observable<ValidationErrors> {
+    return this.namesValidation.validateUserName(control.value);
   }
   onAddHobby() {
     const control = new FormControl(null, Validators.required);

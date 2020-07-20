@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { ReactiveFormComponent } from './components/reactive-form/reactive-form.component';
+import { NamesValidationService } from './utils/signup.validator';
 
 
 @NgModule({
@@ -18,7 +19,7 @@ import { ReactiveFormComponent } from './components/reactive-form/reactive-form.
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [ NamesValidationService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
