@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
-import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from "@angular/common/http";
+import {HttpEvent, HttpEventType, HttpHandler, HttpInterceptor, HttpRequest} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {tap} from "rxjs/operators";
 
 @Injectable()
 
@@ -10,7 +11,12 @@ export class PostsInterceptor implements HttpInterceptor {
     const newRequest = req.clone({
       headers: req.headers.append('post', 'withToken')
     });
-    return next.handle(newRequest);
+    return next.handle(newRequest).pipe(tap(event => {
+        if(event.type === HttpEventType.Response) {
+          console.log('Response came');
+        }
+      }
+    ));
   }
 
 }
