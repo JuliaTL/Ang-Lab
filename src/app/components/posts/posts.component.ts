@@ -1,6 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { PostsI } from "../../models/posts.model";
 import { PostsServiceService } from "../../services/posts-service.service";
+import { NgForm } from "@angular/forms";
 
 @Component({
   selector: 'app-posts',
@@ -8,6 +9,7 @@ import { PostsServiceService } from "../../services/posts-service.service";
   styleUrls: ['./posts.component.scss']
 })
 export class PostsComponent implements OnInit, OnDestroy {
+  @ViewChild('postForm') postForm: NgForm;
   postsArray: PostsI[] = [];
   isLoading: boolean;
   subscriberGet: any;
@@ -25,7 +27,7 @@ export class PostsComponent implements OnInit, OnDestroy {
 
   onCreatePost(postData: PostsI) {
     this.postService.createPost(postData);
-    //this.postService.getPosts();
+    this.postForm.reset();
   }
   onGetPosts() {
     this.isLoading = true;
@@ -33,10 +35,14 @@ export class PostsComponent implements OnInit, OnDestroy {
       .subscribe( posts => {
         this.isLoading = false;
         this.postsArray = posts;
-      });
+      }, error => console.log(error));
   }
   onDeletePosts() {
       this.subscriberDelete = this.postService.deletePosts()
-        .subscribe( () => this.postsArray = []);
+        .subscribe( () => {
+          this.postsArray = [];
+            this.postService.getPosts();
+        }, error => console.log(error),
+        );
   }
 }

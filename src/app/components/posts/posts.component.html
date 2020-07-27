@@ -37,11 +37,13 @@
             > Get Posts</button>
     <button class="btn btn-danger"
             (click)="onDeletePosts()"
+            [disabled]="postsArray.length === 0"
             > Delete Posts</button>
   </form>
 </div>
 <div class="row">
   <div class="col-12">
+    <p *ngIf="isLoading">Loading......</p>
     <p *ngIf="postsArray.length < 1 && !isLoading"> No Posts!</p>
     <ul class="list-group" *ngIf="postsArray.length > 0">
       <li class="list-group-item" *ngFor="let item of postsArray">
@@ -49,6 +51,5 @@
         <p>{{item.post}}</p>
       </li>
     </ul>
-    <p *ngIf="isLoading">Loading......</p>
   </div>
 </div>
