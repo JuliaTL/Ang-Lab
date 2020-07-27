@@ -1,0 +1,54 @@
+<div class="col-xs-8 text-center">
+  <form (ngSubmit)="onCreatePost(postForm.value)" #postForm="ngForm">
+    <div id="post-data">
+      <div class="form-group">
+        <label for="title"> title:
+          <span class="text-danger">*</span>
+          <input id="title"
+                 class="form-control"
+                 type="text"
+                 ngModel
+                 name="title"
+                 required
+                 minlength="3"
+          >
+        </label>
+      </div>
+      <div class="form-group">
+        <label for="post"> Post:
+          <span class="text-danger">*</span>
+          <textarea id="post"
+                    class="form-control"
+                    type="text"
+                    ngModel
+                    name="post"
+                    required
+          ></textarea>
+        </label>
+      </div>
+    </div>
+            <p class="msg text-danger" *ngIf="postForm.invalid && postForm.touched">Form is invalid</p>
+    <button class="btn btn-success"
+            type="submit"
+            [disabled]="!postForm.valid"
+            >Add Post</button>
+    <button class="btn btn-primary"
+            (click)="onGetPosts()"
+            > Get Posts</button>
+    <button class="btn btn-danger"
+            (click)="onDeletePosts()"
+            > Delete Posts</button>
+  </form>
+</div>
+<div class="row">
+  <div class="col-12">
+    <p *ngIf="postsArray.length < 1 && !isLoading"> No Posts!</p>
+    <ul class="list-group" *ngIf="postsArray.length > 0">
+      <li class="list-group-item" *ngFor="let item of postsArray">
+        <h6>{{item.title}}</h6>
+        <p>{{item.post}}</p>
+      </li>
+    </ul>
+    <p *ngIf="isLoading">Loading......</p>
+  </div>
+</div>
