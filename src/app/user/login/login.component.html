@@ -1,0 +1,83 @@
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading text-center text-primary">
+      {{pageTitle}}
+    </div>
+    <div class="text-center" *ngIf="isLoading">
+      <app-spinner></app-spinner>
+    </div>
+    <div class="panel-body" *ngIf="!isLoading">
+      <form class="form-horizontal" (ngSubmit)="onLogin(loginForm)" #loginForm="ngForm">
+        <fieldset>
+          <div class="form-group" [ngClass]="{'has-error': (email.touched ||
+                                                email.dirty) &&
+                                                !email.valid }">
+            <label class="col-md-2 control-label" for="userEmailId">Email</label>
+
+            <div class="col-md-8">
+              <input class="form-control"
+                     id="userEmailId"
+                     type="email"
+                     placeholder="Email (required)"
+                     required
+                     ngModel
+                     name="email"
+                     #email="ngModel" />
+              <span class="help-block text-danger"
+                    *ngIf="(email.touched ||
+                            email.dirty) &&
+                            email.errors">
+                                <span *ngIf="email.errors.required"> Email is required.</span>
+              </span>
+            </div>
+          </div>
+
+          <div class="form-group" [ngClass]="{'has-error': (password.touched ||
+                                                password.dirty) &&
+                                                !password.valid }">
+            <label class="col-md-2 control-label" for="passwordId">Password</label>
+
+            <div class="col-md-8">
+              <input class="form-control"
+                     id="passwordId"
+                     type="password"
+                     placeholder="Password (required)"
+                     required
+                     ngModel
+                     name="password"
+                     #password="ngModel"
+                     minlength="6"/>
+              <span class="help-block text-danger"
+                    *ngIf="(password.touched ||
+                            password.dirty) &&
+                            password.errors">
+                                <span *ngIf="password.errors.required">Password is required.</span>
+              </span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-md-4 col-md-offset-2">
+                                <span>
+                                <button class="btn btn-primary"
+                                        type="submit"
+                                        style="width:80px;margin-right:10px"
+                                        [disabled]="!loginForm.valid">
+                                        {{ isLoggingMode ? 'LogIn' : 'SignUp'}}
+                                </button>
+                            </span>
+              <span> Or
+                                <a class="btn btn-primary"
+                                   (click)="onSwitchMode()">
+                                   {{ isLoggingMode ? 'SignUp' : 'LogIn'}}
+                                </a>
+                            </span>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+      <div class="has-error" *ngIf="errorMessage">{{errorMessage}}</div>
+    </div>
+
+  </div>
+</div>
