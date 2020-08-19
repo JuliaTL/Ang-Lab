@@ -3,6 +3,7 @@
     <div class="panel-heading text-center text-primary">
       {{pageTitle}}
     </div>
+    <div class="alert alert-danger" *ngIf="error"><span>{{error}}</span></div>
     <div class="text-center" *ngIf="isLoading">
       <app-spinner></app-spinner>
     </div>

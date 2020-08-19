@@ -11,11 +11,11 @@ import { AuthGuard } from './user/auth-guard.service';
 
 
 const routes: Routes = [
-  {path: '',  component: ContainerComponent, children: [
+  {path: '',  component: ContainerComponent, canActivate: [AuthGuard], children: [
     {path: '', component: HomePageComponent}
     ]
   },
-  {path: 'create-shopping-item',  component: ContainerComponent, children: [
+  {path: 'create-shopping-item',  component: ContainerComponent, canActivate: [AuthGuard], children: [
       {path: '', component: CreateShoppingItemPageComponent}
     ]
   },

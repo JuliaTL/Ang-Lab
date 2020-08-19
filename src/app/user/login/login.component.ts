@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { NgForm } from "@angular/forms";
-import { AuthService } from "../auth.service";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
+import { Observable} from 'rxjs';
+import { IUser } from '../user.model';
 
 
 @Component({
@@ -8,16 +11,21 @@ import { AuthService } from "../auth.service";
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   pageTitle = 'LOGIN';
   errorMessage: string;
   isLoggingMode: boolean;
   isLoading: boolean;
+  error: string;
   authSubscriber: any;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,
+              private router: Router) { }
 
   ngOnInit(): void {
+  }
+  ngOnDestroy(): void {
+    this.authSubscriber.unsubscribe();
   }
 
   onLogin(loginForm: NgForm) {
@@ -25,19 +33,19 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.isLoading = true;
+    let observable: Observable<IUser>;
 
     if(this.isLoggingMode) {
-      this.authService.login(loginForm.value)
-        .subscribe(
-          res => {
-            this.isLoading = false;
-            console.log(res)});
+        observable =  this.authService.login(loginForm.value)
     } else {
-        this.authService.signup(loginForm.value)
-          .subscribe(res => {
-            this.isLoading = false;
-            console.log(res)});
+        observable = this.authService.signup(loginForm.value)
         }
+    this.authSubscriber = observable.subscribe(
+      res => {
+        this.isLoading = false;
+        this.router.navigate(['/']);
+      }, error => this.error = 'Your request failed'
+    );
     loginForm.reset();
     }
 
