@@ -12,7 +12,7 @@ import { IUser } from '../user.model';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit, OnDestroy {
-  pageTitle = 'LOGIN';
+  pageTitle = 'LOGIN PAGE';
   errorMessage: string;
   isLoggingMode: boolean;
   isLoading: boolean;
@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.authSubscriber = observable.subscribe(
       res => {
         this.isLoading = false;
-        this.router.navigate(['/']);
+        this.router.navigate(['']);
       }, error => this.error = 'Your request failed'
     );
     loginForm.reset();

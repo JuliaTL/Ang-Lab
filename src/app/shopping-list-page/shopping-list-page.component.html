@@ -1,22 +1,27 @@
 <div class="container">
-  <h3 class="text-center text-primary"> My Shopping List </h3>
   <div class="row">
+<h3 class="text-center text-primary"> My Shopping List</h3>
+    <button type="button"
+            class="btn btn-outline-danger align-self-end"
+            (click)="onDeleteAllItems()"> Delete all Items</button>
+  </div>
+<div class="row">
     <div class="col-6"
          *ngIf="shoppingService.shoppingList">
-      <div class="list-group">
+      <div class="list-group align-self-center">
         <a class="list-group-item list-group-item-action"
            *ngFor="let item of shoppingService.shoppingList;
                          let id = index"
-           [routerLink]="['view-shopping-item/', id]"
-           [queryParams]="{allowEdit: id}"
         >
           <h6 class="text-success"> {{ item.itemName }} </h6>
           <small> {{ item.itemAmount }}</small>
         </a>
       </div>
     </div>
-    <div class="col-6">
-      <router-outlet></router-outlet>
+    <div class="text-center"
+         *ngIf="shoppingService.isLoading">
+      <app-spinner></app-spinner>
     </div>
+   <p *ngIf="shoppingService.shoppingList.length == 0 && !shoppingService.isLoading"> Shopping list is empty</p>
   </div>
 </div>

@@ -7,10 +7,16 @@ import { ShoppingService } from './shopping.service';
   styleUrls: ['./shopping-list-page.component.scss']
 })
 export class ShoppingListPageComponent implements OnInit {
-
   constructor(public shoppingService: ShoppingService) { }
 
   ngOnInit(): void {
+    this.onGetShoppingItems();
   }
-
+  onGetShoppingItems() {
+    this.shoppingService.getShoppingItems();
+  }
+  onDeleteAllItems() {
+    this.shoppingService.deleteAllItems();
+    this.shoppingService.getShoppingItems();
+  }
 }

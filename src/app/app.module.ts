@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
@@ -9,11 +9,11 @@ import { HeaderComponent } from './core/header/header.component';
 import { ContainerComponent } from './container/container.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
-import { LoginComponent } from './user/login/login.component';
-import { ShoppingListPageComponent } from './shopping-list-page/shopping-list-page.component';
 import { CreateShoppingItemPageComponent } from './create-shopping-item-page/create-shopping-item-page.component';
-import { SpinnerComponent } from './shared/spinner/spinner.component';
-import {AuthInterceptorService} from "./user/auth.interceptor.service";
+import { AuthInterceptorService } from "./user/auth.interceptor.service";
+import {ShoplistModule} from "./shopping-list-page/shoplist.module";
+import {UserModule} from "./user/user.module";
+import {SharedModule} from "./shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -22,17 +22,17 @@ import {AuthInterceptorService} from "./user/auth.interceptor.service";
     ContainerComponent,
     HomePageComponent,
     NotFoundPageComponent,
-    LoginComponent,
-    ShoppingListPageComponent,
-    CreateShoppingItemPageComponent,
-    SpinnerComponent
+    CreateShoppingItemPageComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        FormsModule,
-        HttpClientModule,
-    ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    ShoplistModule,
+    SharedModule,
+    UserModule,
+    AppRoutingModule,
+  ],
   providers: [ HttpClientModule,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}
     ],

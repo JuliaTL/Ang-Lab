@@ -1,31 +1,43 @@
 import { Injectable } from '@angular/core';
+import { IShopItem } from "./shopItem.model";
+import { HttpClient } from "@angular/common/http";
+import { map } from "rxjs/operators";
+import { apiBaseShoppingItems } from "../utils/api";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShoppingService {
-  shoppingList:  { itemName: string, itemAmount: string }[] = [
-    { itemName: 'cheese', itemAmount: '200gr' },
-    { itemName: 'tomato', itemAmount: '2kg' },
-    { itemName: 'cucumber', itemAmount: '3kg' },
-    { itemName: 'eggs', itemAmount: '20e' },
-    { itemName: 'milk', itemAmount: '2l' },
-    { itemName: 'fish', itemAmount: '2kg' },
-    { itemName: 'meat', itemAmount: '800gr' },
-  ];
+  shoppingList: IShopItem[] = [];
+  isLoading = false;
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  addItem(item: {itemName: string, itemAmount: string}) {
-    this.shoppingList.push(item);
+  addItem(itemData: IShopItem) {
+      this.http.post(apiBaseShoppingItems, itemData)
+        .subscribe( res => console.log(res));
   }
-
-  changeItem(id: number, itemName: string, itemAmount: string) {
-    this.shoppingList[id].itemName = itemName;
-    this.shoppingList[id].itemAmount = itemAmount;
+  getShoppingItems(){
+    this.isLoading = true;
+    this.http.get<{[key:string]: IShopItem}>(apiBaseShoppingItems)
+      .pipe(
+        map((res) => {
+          const shoppingList = [];
+          for( const key in res){
+            if(res.hasOwnProperty(key)){
+              shoppingList.push({...res[key], id: key})
+            }
+          }
+      return shoppingList;
+    } ))
+      .subscribe(items => {
+        this.isLoading = false;
+        this.shoppingList = items;
+      });
   }
-
-  getItem (id:number) {
-    return this.shoppingList[id];
+  deleteAllItems() {
+      this.http.delete(apiBaseShoppingItems)
+        .subscribe();
   }
 }
+

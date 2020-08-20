@@ -1,26 +1,32 @@
 <div class="row text-center justify-content-center">
-  <form>
+  <form #shopForm="ngForm" (ngSubmit)="onCreateShopItem(shopForm.value)">
     <div class="form-group">
-      <label> Name:
+      <label for="itemName"> Name:
         <input type="text"
                class="form-control"
                placeholder="name"
-               #itemNameInput
+               ngModel
+               id="itemName"
+               name="itemName"
+               required
         >
       </label>
       <div class="form-group">
-        <label> Amount:
+        <label for="itemAmount"> Amount:
           <input type="text"
                  class="form-control"
                  placeholder="amount"
-                 #itemAmountInput
+                 ngModel
+                 id="itemAmount"
+                 name="itemAmount"
+                 required
           >
         </label>
       </div>
     </div>
     <button type="submit"
             class="btn btn-primary"
-            (click)="createItem(itemNameInput, itemAmountInput)"
+            [disabled]="!shopForm.valid"
     >Submit</button>
   </form>
 </div>

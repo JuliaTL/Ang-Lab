@@ -13,7 +13,10 @@ export class AuthGuard implements CanActivate {
   }
   canActivate(route: ActivatedRouteSnapshot,
               state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    return this.router.navigate(['/']);
+    if(this.authService.currentUser) {
+      return this.authService.isAuthenticate;
+    } else {
+      this.router.navigate(['/auth']);
+    }
   }
-
 }

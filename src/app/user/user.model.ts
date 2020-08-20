@@ -4,6 +4,7 @@ export interface IUser {
   refreshToken: string;
   expiresIn: number;
   localId: string;
+  tokenExpDate: Date;
   registered?: boolean;
 }
 

@@ -1,6 +1,7 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { ShoppingService } from '../shopping-list-page/shopping.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { IShopItem } from "../shopping-list-page/shopItem.model";
 
 @Component({
   selector: 'app-create-shopping-item-page',
@@ -8,17 +9,14 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./create-shopping-item-page.component.scss']
 })
 export class CreateShoppingItemPageComponent {
-  @ViewChild('itemNameInput') itemNameInput;
-  @ViewChild('itemAmountInput') itemAmountInput;
 
   constructor(private shoppingService: ShoppingService,
               public router: Router,
               private route: ActivatedRoute) { }
 
-  createItem(itemNameInput, itemAmountInput) {
-    this.shoppingService.addItem({itemName: itemNameInput.value,
-      itemAmount: itemAmountInput.value});
-    this.router.navigate(['../view-shopping-list'], {relativeTo: this.route});
+  onCreateShopItem(itemData: IShopItem) {
+    this.shoppingService.addItem(itemData);
+    this.shoppingService.getShoppingItems();
+    this.router.navigate(['../shopping-list'], {relativeTo: this.route});
   }
-
 }
