@@ -1,6 +1,6 @@
 # Epam Training Angular
 ## Tasks on Branches
-Task1 -> Basics
+####Task1 -> Basics
 Task2 -> Directives, Data-Binding
 Task3
 Task4 -> Practice, ViewChild
@@ -13,7 +13,7 @@ Task10 -> RxJs
 Task11 -> Forms
 Task12 -> Reactive-forms
 Task13 -> http-client
-TaskFinal -> Auth, Firebase, RxJs
+Task14 -> Final(Auth, Firebase, RxJs)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.3.
 
